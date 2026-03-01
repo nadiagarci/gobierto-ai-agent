@@ -72,3 +72,5 @@ gem "langchainrb", "~> 0.5.7"
 gem "pgvector", "~> 0.3.2"
 
 gem "tailwindcss-rails", "~> 4.4"
+
+gem "ruby-openai", "~> 8.3"
