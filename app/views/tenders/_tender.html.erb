@@ -1,0 +1,18 @@
+<div id="<%= dom_id tender %>" class="w-full sm:w-auto my-5 space-y-5">
+  <div>
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= tender.title %>
+  </div>
+  <div>
+    <strong class="block font-medium mb-1">Description:</strong>
+    <%= tender.description %>
+  </div>
+  <p>
+  <strong>Attached PDF:</strong>
+  <% if tender.pdf.attached? %>
+    <%= link_to tender.pdf.filename, url_for(tender.pdf), target: "_blank" %>
+  <% else %>
+    No PDF attached.
+  <% end %>
+</p>
+</div>
