@@ -25,6 +25,9 @@ class TendersController < ApplicationController
 
     respond_to do |format|
       if @tender.save
+        # Ejecutamos el procesador justo después de guardar
+        PdfProcessor.new(@tender).call
+        
         format.html { redirect_to @tender, notice: "Tender was successfully created." }
         format.json { render :show, status: :created, location: @tender }
       else
