@@ -73,4 +73,4 @@ An intelligent tender management system built with **Ruby on Rails 8**. This age
     ```
 
 ---
-*Developed with ❤️ as part of the Gobierto AI Agent project.*
+*Developed with ❤️ for the AI Agent Challenge.*
