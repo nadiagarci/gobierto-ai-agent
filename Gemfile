@@ -67,7 +67,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "langchainrb", "~> 0.5.7"
+gem "langchainrb", "~> 0.19.5"
 
 gem "pgvector", "~> 0.3.2"
 
