@@ -69,7 +69,7 @@ end
 
 gem "langchainrb", "~> 0.5.7"
 
-gem "pgvector", "~> 0.3.2"
+gem "pgvector", "~> 0.3.3"
 
 gem "tailwindcss-rails", "~> 4.4"
 
