@@ -25,10 +25,11 @@ class TendersController < ApplicationController
 
     respond_to do |format|
       if @tender.save
-        # Ejecutamos el procesador justo después de guardar
-        PdfProcessor.new(@tender).call
+        # 1. Cambiamos el procesador antiguo por el nuevo Evaluador
+        TenderEvaluator.new(@tender).call
         
-        format.html { redirect_to @tender, notice: "Tender was successfully created." }
+        # 2. Actualizamos el mensaje para que sea más profesional
+        format.html { redirect_to @tender, notice: "Licitación guardada y analizada por la IA de Gobierto con éxito." }
         format.json { render :show, status: :created, location: @tender }
       else
         format.html { render :new, status: :unprocessable_entity }
