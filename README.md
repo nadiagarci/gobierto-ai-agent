@@ -24,7 +24,7 @@ El objetivo es transformar archivos PDF densos y complejos en información accio
 - [ ] Chat interactivo para consultas sobre el pliego. -->
 
 
-# 🤖 Gobierto AI Agent
+<!-- # 🤖 Gobierto AI Agent
 
 An intelligent tender management system built with **Ruby on Rails 8**. This agent automatically processes PDF documents to extract and summarize key professional requirements using OpenAI's GPT models through Langchain.
 
@@ -73,4 +73,45 @@ An intelligent tender management system built with **Ruby on Rails 8**. This age
     ```
 
 ---
-*Developed with ❤️ for the AI Agent Challenge.*
+*Developed with ❤️ for the AI Agent Challenge.* -->
+
+# 🤖 Gobierto AI Agent (v2.0)
+
+An intelligent tender management system built with **Ruby on Rails 8.1**. This agent automatically processes PDF documents to evaluate public procurement opportunities, determining business viability and extracting technical requirements using OpenAI's GPT-4.
+
+🚀 Key Features
+
+* **Tender Evaluation:** Automatic decision-making (Go / No-Go) based on a custom company profile.
+* **Intelligent Extraction:** Summarizes budget, solvency requirements, and executive summaries into structured JSON.
+* **Safe Credentials:** Hybrid environment configuration using `.env` for agile development, bypassing complex encrypted credentials.
+* **Robust Service Architecture:** Business logic encapsulated in `TenderEvaluator` for high maintainability.
+
+🛠️ Technical Stack
+
+* **Framework:** Ruby on Rails 8.1
+* **AI Orchestration:** Langchainrb
+* **LLM:** OpenAI (GPT-4)
+* **PDF Parsing:** pdf-reader
+* **Database:** PostgreSQL with `jsonb` for persisting AI analysis.
+
+🧠 Project Memory: Why this architecture?
+
+* **From Extraction to Evaluation:** We evolved from `PdfProcessor` to `TenderEvaluator`. The goal shifted from just reading text to comparing tender requirements against a real company profile (`COMPANY_PROFILE`).
+* **The Credentials Pivot:** We moved away from `credentials.yml.enc` toward a `.env` approach. This was a strategic decision to avoid "Master Key" dependency issues across different development environments.
+* **JSONB Persistence:** Analysis results are stored in a PostgreSQL `jsonb` column, allowing the UI to render structured data without re-calling the LLM.
+
+🚧 Upcoming Milestones (Roadmap)
+
+* **[DONE]** Core AI Logic & JSON Parsing.
+* **[NEXT]** UI/UX Enhancement: Modernize the tender index with Tailwind CSS "cards" for the AI verdict.
+* **Interactive Agent:** A chat sidebar to ask "What is the penalty for late delivery?" without reading the whole PDF.
+
+🔧 Installation & Setup
+
+1. **Clone the repo:** `git clone https://github.com/nadiagarci/gobierto-ai-agent.git`
+2. **Setup Keys:** Create a `.env` file in the root and add:
+   `OPENAI_ACCESS_TOKEN="your_sk_key_here"`
+3. **Install & Migrate:** `bundle install && bin/rails db:migrate`
+4. **Run Dev Suite:** `bin/dev` (Launches Rails + Tailwind)
+
+Developed with ❤️ by Nadia Garcia.
