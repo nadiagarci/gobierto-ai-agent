@@ -10,10 +10,11 @@
 #    embeddings_model_name: "text-embedding-3-small"
 #  }
 #)
+require "dotenv/load" # <--- ESTA LÍNEA ES VITAL
 
 # Usamos una configuración más estándar para evitar el error de mapeo de tokens
 OPENAI_CLIENT = Langchain::LLM::OpenAI.new(
-  api_key: Rails.application.credentials.openai[:api_key],
+  api_key: ENV['OPENAI_ACCESS_TOKEN'],
   default_options: {
     # Cambiamos temporalmente a "gpt-4" para asegurar compatibilidad con la gema
     chat_completion_model_name: "gpt-4",
