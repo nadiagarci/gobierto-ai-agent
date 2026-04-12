@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   # ... el resto de tus rutas (up, pwa, etc.)
   get "up" => "rails/health#show", as: :rails_health_check
   
-  root "tenders#index" # Opcional: para que la app abra directamente en las licitaciones
+  root "tenders#new" 
 end
