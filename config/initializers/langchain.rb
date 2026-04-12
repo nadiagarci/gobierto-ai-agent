@@ -18,6 +18,8 @@ OPENAI_CLIENT = Langchain::LLM::OpenAI.new(
   default_options: {
     # Cambiamos temporalmente a "gpt-4" para asegurar compatibilidad con la gema
     chat_completion_model_name: "gpt-4",
+    # Usamos gpt-4o-mini: es 10 veces más barato y mucho más rápido
+    # chat_completion_model_name: "gpt-4o-mini",
     embeddings_model_name: "text-embedding-3-small"
   }
 )

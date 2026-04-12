@@ -67,7 +67,7 @@ class TenderEvaluator
     @pdf_file.open do |file|
       reader = PDF::Reader.new(file.path)
       # Cogemos los primeros 5000 caracteres para no pasarnos de tokens
-      reader.pages.map(&:text).join("\n").truncate(20000)
+      reader.pages.map(&:text).join("\n").truncate(5000)
     end
   end
 end
