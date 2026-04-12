@@ -61,6 +61,23 @@ class TendersController < ApplicationController
     end
   end
 
+  def analyze
+    # 1. Buscamos la licitación por el ID de la URL
+    @tender = Tender.find(params[:id])
+  
+    # 2. Verificamos que tenga un PDF antes de llamar a la IA
+    if @tender.pdf.attached?
+      # 3. Llamamos al evaluador 
+      if TenderEvaluator.new(@tender).call
+        redirect_to @tender, notice: "Análisis actualizado con éxito mediante GPT-4."
+      else
+        redirect_to @tender, alert: "La IA no pudo procesar el documento. Revisa los logs."
+      end
+    else
+      redirect_to @tender, alert: "No hay ningún PDF adjunto para analizar."
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tender
