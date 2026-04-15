@@ -29,7 +29,7 @@ class TendersController < ApplicationController
         TenderEvaluator.new(@tender).call
         
         # 2. Actualizamos el mensaje para que sea más profesional
-        format.html { redirect_to @tender, notice: "Licitación guardada y analizada por la IA de Gobierto con éxito." }
+        format.html { redirect_to @tender, notice: "Licitación guardada y analizada por nuestro motor de IA con éxito." }
         format.json { render :show, status: :created, location: @tender }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -69,7 +69,7 @@ class TendersController < ApplicationController
     if @tender.pdf.attached?
       # 3. Llamamos al evaluador 
       if TenderEvaluator.new(@tender).call
-        redirect_to @tender, notice: "Análisis actualizado con éxito mediante GPT-4."
+        redirect_to @tender, notice: "Análisis actualizado con éxito mediante nuestro motor de IA."
       else
         redirect_to @tender, alert: "La IA no pudo procesar el documento. Revisa los logs."
       end
