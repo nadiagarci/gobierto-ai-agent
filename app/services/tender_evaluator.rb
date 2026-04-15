@@ -23,6 +23,15 @@ class TenderEvaluator
       
       instructions = <<~PROMPT
         Actúa como consultor experto de Gobierto. Analiza el siguiente pliego de licitación.
+        Vas a analizar un fragmento de las primeras páginas de un pliego de licitación pública. 
+        Céntrate en extraer el objeto, presupuesto y requisitos de solvencia técnica/económica que suelen aparecer en estos primeros capítulos.
+        
+
+        ### REGLAS DE ORO PARA EL VEREDICTO:
+        1. LA SOLVENCIA TÉCNICA ES ELIMINATORIA: Si el pliego exige experiencia previa en una actividad (ej. "Cines de Verano") y el perfil de la empresa NO la tiene explícitamente, el veredicto DEBE ser "No-Go". 
+        2. NO PROMEDIES: Tener mucha solvencia económica NO compensa la falta de experiencia técnica. Un fallo técnico = No-Go automático.
+        3. DETECCIÓN DE RIESGOS: En 'puntos_clave', busca activamente términos como "no cumple", "falta de experiencia", "riesgo de exclusión" o "insuficiente".
+      
         
         PERFIL DE MI EMPRESA:
         #{COMPANY_PROFILE.to_json}
@@ -31,6 +40,7 @@ class TenderEvaluator
         #{raw_text}
 
         TAREA:
+        
         Responde ÚNICAMENTE con un objeto JSON válido (sin texto extra):
         {
           "presupuesto": "importe con moneda",
