@@ -31,6 +31,11 @@ class TenderEvaluator
         1. LA SOLVENCIA TÉCNICA ES ELIMINATORIA: Si el pliego exige experiencia previa en una actividad (ej. "Cines de Verano") y el perfil de la empresa NO la tiene explícitamente, el veredicto DEBE ser "No-Go". 
         2. NO PROMEDIES: Tener mucha solvencia económica NO compensa la falta de experiencia técnica. Un fallo técnico = No-Go automático.
         3. DETECCIÓN DE RIESGOS: En 'puntos_clave', busca activamente términos como "no cumple", "falta de experiencia", "riesgo de exclusión" o "insuficiente".
+
+        IMPORTANTE PARA 'puntos_clave':
+        Si el veredicto es No-Go, redacta los puntos clave indicando claramente la falta o el riesgo. 
+        Ejemplo: En lugar de "Experiencia en murales", escribe "Falta de experiencia en murales de arte urbano".
+        
       
         
         PERFIL DE MI EMPRESA:
@@ -76,7 +81,7 @@ class TenderEvaluator
   def extract_text_from_pdf
     @pdf_file.open do |file|
       reader = PDF::Reader.new(file.path)
-      # Cogemos los primeros 5000 caracteres para no pasarnos de tokens
+      # Cogemos los primeros 20000 caracteres para no pasarnos de tokens
       reader.pages.map(&:text).join("\n").truncate(20000)
     end
   end

@@ -75,7 +75,7 @@ An intelligent tender management system built with **Ruby on Rails 8**. This age
 ---
 *Developed with ❤️ for the AI Agent Challenge.* -->
 
-# 🤖 Gobierto AI Agent (v2.0)
+<!-- # 🤖 Gobierto AI Agent (v2.0)
 
 An intelligent tender management system built with **Ruby on Rails 8.1**. This agent automatically processes PDF documents to evaluate public procurement opportunities, determining business viability and extracting technical requirements using OpenAI's GPT-4.
 
@@ -113,5 +113,48 @@ An intelligent tender management system built with **Ruby on Rails 8.1**. This a
    `OPENAI_ACCESS_TOKEN="your_sk_key_here"`
 3. **Install & Migrate:** `bundle install && bin/rails db:migrate`
 4. **Run Dev Suite:** `bin/dev` (Launches Rails + Tailwind)
+
+Developed with ❤️ by Nadia Garcia. -->
+
+# 🤖 AI-Powered Procurement Analyzer
+
+An intelligent tender management system built with **Ruby on Rails 8.1**. This agent automatically processes PDF documents to evaluate public procurement opportunities, determining business viability and extracting technical requirements using a **RAG-ready architecture**.
+
+🚀 **Key Features**
+
+* **Tender Evaluation:** Automatic decision-making (Go / No-Go) based on a custom company profile.
+* **Intelligent Extraction:** Summarizes budget, solvency requirements, and executive summaries into structured JSON.
+* **Vectorized Memory:** Prepared for semantic search and RAG (Retrieval-Augmented Generation) using vector embeddings.
+* **Zero-Downtime Pipeline:** Modern deployment and task management without the overhead of Redis via Solid Queue.
+
+🛠️ **Technical Stack**
+
+* **Framework:** Ruby on Rails 8.1 (Edge)
+* **AI Orchestration:** Langchainrb
+* **LLM:** OpenAI (GPT-4)
+* **Vector DB:** PostgreSQL + `pgvector`
+* **UX/UI:** Hotwire (Turbo & Stimulus) + Tailwind CSS
+* **Infrastructure:** Kamal (Deployment / Docker-based orchestration) and Solid Stack (Queue/Cache).
+
+🧠 **Project Memory: Why this architecture?**
+
+* **The RAG Pivot:** We integrated `pgvector` to move beyond simple text parsing. The goal shifted from just reading text to creating a "Corporate Memory" that compares tenders against historical company data.
+* **Infrastructure Minimalism:** By adopting `Solid Queue` and `Solid Cache`, we eliminated the need for Redis. This ensures a "One Person Framework" approach: powerful but easy to maintain.
+* **JSONB Persistence:** Analysis results are stored in a PostgreSQL `jsonb` column, allowing the UI to render structured data without re-calling the LLM.
+
+🚧 **Upcoming Milestones (Roadmap)**
+
+* **[DONE]** Core AI Logic & JSON Parsing.
+* **[DONE]** Rails 8 Migration & Solid Stack integration.
+* **[NEXT]** Semantic Search: Implementation of RAG to query company experience against tender requirements.
+* **Interactive Agent:** A chat sidebar to ask "What is the penalty for late delivery?" using vectorized document chunks.
+
+🔧 **Installation & Setup**
+
+1. **Clone the repo:** `git clone https://github.com/nadiagarci/gobierto-ai-agent.git`
+2. **Setup Keys:** Create a `.env` file in the root and add:
+   `OPENAI_ACCESS_TOKEN="your_sk_key_here"`
+3. **Install & Setup:** `bundle install && bin/rails db:prepare`
+4. **Run Dev Suite:** `bin/dev` (Launches Rails + Tailwind + Solid Queue)
 
 Developed with ❤️ by Nadia Garcia.
